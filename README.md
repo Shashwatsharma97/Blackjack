@@ -4,12 +4,14 @@ A single-player Blackjack game that runs entirely in the browser — plain HTML,
 
 ## Demo
 
+🎥 [Watch the demo video](demo/blackjack-demo.mp4)
+
 <!--
-  Add your demo video here after uploading it (see "Recording & adding a demo video" below).
-  Once uploaded through the GitHub web UI, GitHub gives you a link that looks like:
-  https://github.com/Shashwatsharma97/Blackjack/assets/xxxxxx/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.mp4
-  Paste that link on its own line right here — GitHub automatically renders it as a
-  playable inline video on the repo page.
+  This links to the video committed in the repo — click it to open GitHub's built-in
+  video player. If you want the video to preview inline directly on this README page
+  instead of requiring a click, drag-and-drop the mp4 into the README/Issue editor on
+  github.com — that generates a github.com/.../assets/... link which GitHub renders as
+  an inline playable video when pasted here.
 -->
 
 ## Features
@@ -64,24 +66,6 @@ Blackjack/
 ├── style.css     # layout, theming, and animations
 └── index.js      # game rules, state, and DOM updates
 ```
-
-## Recording & adding a demo video (macOS)
-
-1. Run the game locally (see "Getting started" above).
-2. Press **Cmd+Shift+5** to open the macOS screenshot/recording toolbar.
-3. Choose **Record Selected Portion**, drag a box around the browser window, then click **Record**.
-4. Play a round of the game (deal, hit/stand, and a win to show the confetti).
-5. Click the stop icon in the menu bar to end the recording — it saves to your Desktop as a `.mov` file.
-6. (Optional, keeps the file small) Convert it to `.mp4`:
-   ```bash
-   ffmpeg -i ~/Desktop/your-recording.mov -vcodec h264 -acodec aac ~/Desktop/blackjack-demo.mp4
-   ```
-   (Install ffmpeg first if needed: `brew install ffmpeg`.)
-7. Upload it to GitHub so it plays inline in this README:
-   - Go to this repo on github.com and open `README.md` for editing (pencil icon), or open a new Issue — either editor works.
-   - Drag and drop your `.mp4` file into the text box.
-   - GitHub uploads it and inserts a link like `https://github.com/Shashwatsharma97/Blackjack/assets/.../xxxxxxx.mp4`.
-   - Copy that link into the **Demo** section at the top of this file, then commit.
 
 ## Author
 
