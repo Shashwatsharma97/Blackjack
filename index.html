@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app">
+        <h1>BLACKJACK</h1>
+        <h2 id="subhed">Test your Luck</h2>
+
+        <div id="table">
+            <section class="hand-area dealer-area">
+                <h3>Dealer <span id="dealer-score" class="score"></span></h3>
+                <div id="dealer-cards" class="cards"></div>
+            </section>
+
+            <p id="message"></p>
+
+            <section class="hand-area player-area">
+                <h3>Player <span id="player-score" class="score"></span></h3>
+                <div id="player-cards" class="cards"></div>
+            </section>
+        </div>
+
+        <div id="controls">
+            <button id="start-btn">Start</button>
+            <button id="hit-btn" class="hidden">Hit</button>
+            <button id="stand-btn" class="hidden">Stand</button>
+        </div>
+    </div>
+
+    <div id="confetti-container"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>

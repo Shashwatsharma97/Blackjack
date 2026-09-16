@@ -1,0 +1,325 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 16px;
+    background:
+        linear-gradient(rgba(10, 0, 2, 0.55), rgba(10, 0, 2, 0.8)),
+        url("blackjack_background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: goldenrod;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    text-align: center;
+}
+
+.app {
+    max-width: 760px;
+    margin: 0 auto;
+    background: rgba(8, 20, 14, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(224, 176, 57, 0.4);
+    border-radius: 28px;
+    padding: 30px 20px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+    display: inline-block;
+    font-size: clamp(32px, 6vw, 48px);
+    letter-spacing: 4px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #0b4f18, #124d23);
+    border-radius: 100px;
+    border: 4px solid #e0b039;
+    text-shadow: 3px 3px 6px black;
+    animation: glow 2.5s ease-in-out infinite;
+    margin: 10px 0 0;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 18px rgba(224, 176, 57, 0.35); }
+    50% { box-shadow: 0 0 38px rgba(224, 176, 57, 0.9); }
+}
+
+h2 {
+    text-shadow: 4px 4px 4px black;
+    margin: 18px 0 26px;
+    font-size: clamp(20px, 4vw, 28px);
+    min-height: 1.2em;
+    transition: color 0.3s ease;
+}
+
+#subhed.win-text {
+    font-size: clamp(30px, 7vw, 52px);
+    color: #4ade80;
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.6), 0 0 24px rgba(74, 222, 128, 0.8);
+    animation: msgPop 0.4s ease;
+}
+
+#confetti-container {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.confetti-piece {
+    position: absolute;
+    top: -20px;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0.9;
+    }
+}
+
+.hand-area {
+    min-height: 170px;
+}
+
+.hand-area h3 {
+    display: inline-block;
+    padding: 6px 22px;
+    border-radius: 20px;
+    font-size: 18px;
+    margin: 0 0 16px;
+    text-shadow: 2px 2px 3px black;
+}
+
+.dealer-area h3 {
+    background: rgba(220, 38, 38, 0.28);
+    border: 1px solid #dc2626;
+}
+
+.player-area h3 {
+    background: rgba(37, 99, 235, 0.28);
+    border: 1px solid #2563eb;
+}
+
+.score {
+    font-size: 16px;
+    color: white;
+    opacity: 0.85;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    min-height: 130px;
+    flex-wrap: wrap;
+    perspective: 1200px;
+}
+
+.card-slot {
+    width: 82px;
+    height: 118px;
+    perspective: 1000px;
+    opacity: 0;
+    transition: transform 0.25s ease;
+}
+
+.card-slot:hover {
+    transform: translateY(-14px) scale(1.08);
+    z-index: 5;
+}
+
+.card-slot.dealt {
+    animation: dealIn 0.5s ease-out both;
+}
+
+@keyframes dealIn {
+    from {
+        opacity: 0;
+        transform: translateY(-70px) scale(0.6) rotate(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.55);
+}
+
+.card-back {
+    background: repeating-linear-gradient(
+        45deg,
+        #0b2a5b,
+        #0b2a5b 8px,
+        #163f82 8px,
+        #163f82 16px
+    );
+    border: 3px solid #e0b039;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-back::after {
+    content: "★";
+    color: rgba(224, 176, 57, 0.7);
+    font-size: 26px;
+}
+
+.card-front {
+    background: #ffffff;
+    color: #d62839;
+    transform: rotateY(180deg);
+    font-weight: bold;
+}
+
+.card-front .corner {
+    position: absolute;
+    font-size: 13px;
+    line-height: 1.05;
+    text-align: center;
+}
+
+.card-front .corner.top {
+    top: 6px;
+    left: 6px;
+}
+
+.card-front .corner.bottom {
+    bottom: 6px;
+    right: 6px;
+    transform: rotate(180deg);
+}
+
+.card-front .pip {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 34px;
+}
+
+#message {
+    font-size: 22px;
+    font-weight: 700;
+    min-height: 1.5em;
+    margin: 14px 0;
+    opacity: 0;
+    transform: scale(0.85);
+}
+
+#message.show {
+    animation: msgPop 0.35s ease forwards;
+}
+
+@keyframes msgPop {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#message.win {
+    color: #4ade80;
+    text-shadow: 0 0 14px rgba(74, 222, 128, 0.8);
+}
+
+#message.lose {
+    color: #f87171;
+    text-shadow: 0 0 14px rgba(248, 113, 113, 0.8);
+}
+
+#message.push {
+    color: #fbbf24;
+    text-shadow: 0 0 14px rgba(251, 191, 36, 0.8);
+}
+
+#controls {
+    margin-top: 24px;
+}
+
+button {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: white;
+    border: none;
+    border-radius: 60px;
+    padding: 20px 46px;
+    margin: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+#start-btn {
+    background: linear-gradient(135deg, #f5af19, #f12711);
+    box-shadow: 0 8px 24px rgba(241, 39, 17, 0.5);
+}
+
+#hit-btn {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    box-shadow: 0 8px 24px rgba(0, 114, 255, 0.5);
+}
+
+#stand-btn {
+    background: linear-gradient(135deg, #ff416c, #ff4b2b);
+    box-shadow: 0 8px 24px rgba(255, 65, 44, 0.5);
+}
+
+button:hover {
+    transform: translateY(-5px) scale(1.07);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: translateY(-1px) scale(0.96);
+}
+
+button.hidden {
+    display: none;
+}
+
+@media (max-width: 480px) {
+    .card-slot {
+        width: 64px;
+        height: 92px;
+    }
+    button {
+        padding: 16px 30px;
+    }
+}
