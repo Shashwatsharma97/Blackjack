@@ -4,15 +4,7 @@ A single-player Blackjack game that runs entirely in the browser — plain HTML,
 
 ## Demo
 
-🎥 [Watch the demo video](demo/blackjack-demo.mp4)
-
-<!--
-  This links to the video committed in the repo — click it to open GitHub's built-in
-  video player. If you want the video to preview inline directly on this README page
-  instead of requiring a click, drag-and-drop the mp4 into the README/Issue editor on
-  github.com — that generates a github.com/.../assets/... link which GitHub renders as
-  an inline playable video when pasted here.
--->
+![Blackjack demo](demo/blackjack-demo.gif)
 
 ## Features
 
